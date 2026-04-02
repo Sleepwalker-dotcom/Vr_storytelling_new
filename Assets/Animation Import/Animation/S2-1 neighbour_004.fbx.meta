@@ -1,0 +1,419 @@
+fileFormatVersion: 2
+guid: 9e978dcd11410aa4b8cc81e43c95e5d0
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'S2-1 neighbour_004' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'CY_Spine1' has translation animation that
+      will be discarded.\n\t'CY_Head' has translation animation that will be discarded.\n\t'CY_LeftHand'
+      has translation animation that will be discarded.\n\t'CY_RightHand' has translation
+      animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: S2-1 neighbour_004
+      takeName: S2-1 neighbour_004
+      internalID: 94821077960596146
+      firstFrame: 364
+      lastFrame: 3904
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: CY_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CY_RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: S2-1 neighbour_004(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_Hips
+      parentName: S2-1 neighbour_004(Clone)
+      position: {x: 0, y: 0.9514894, z: -0.14882714}
+      rotation: {x: 0.00064678607, y: 0.05431968, z: 0.009221853, w: 0.9984808}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_Spine
+      parentName: CY_Hips
+      position: {x: -0, y: 0.08311143, z: 0}
+      rotation: {x: -0.02446249, y: -0.00860468, z: 0.0006628668, w: 0.99966353}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_Spine1
+      parentName: CY_Spine
+      position: {x: -0.0000009983778, y: 0.2058562, z: -0.0000031515956}
+      rotation: {x: -0.014203704, y: -0.0028676149, z: -0.015972193, w: 0.9997674}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_Neck
+      parentName: CY_Spine1
+      position: {x: -0, y: 0.227282, z: 0}
+      rotation: {x: 0.028986758, y: -0.02235575, z: 0.012456731, w: 0.99925214}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_Head
+      parentName: CY_Neck
+      position: {x: -0, y: 0.15710087, z: 0.02027108}
+      rotation: {x: 0.031974483, y: -0.022111451, z: 0.0051732836, w: 0.9992307}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_LeftShoulder
+      parentName: CY_Spine1
+      position: {x: -0.040529907, y: 0.18384308, z: -0.0019246228}
+      rotation: {x: -0.019401472, y: -0.046023868, z: -0.12697102, w: 0.99064815}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_LeftArm
+      parentName: CY_LeftShoulder
+      position: {x: -0.13154894, y: 0, z: 0}
+      rotation: {x: -0.031095743, y: -0.006793945, z: 0.15131281, w: 0.98797333}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_LeftForeArm
+      parentName: CY_LeftArm
+      position: {x: -0.26254898, y: 0, z: 0}
+      rotation: {x: 0.044390783, y: 0.0105789695, z: 0.023004176, w: 0.9986934}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_LeftHand
+      parentName: CY_LeftForeArm
+      position: {x: -0.28766865, y: -0.000005364418, z: -0.0000020861626}
+      rotation: {x: 0.04454595, y: 0.02525491, z: -0.06413021, w: 0.9966269}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_RightShoulder
+      parentName: CY_Spine1
+      position: {x: 0.040139988, y: 0.18384308, z: -0.0019246228}
+      rotation: {x: 0.003022667, y: -0.06830019, z: 0.14627244, w: 0.9868791}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_RightArm
+      parentName: CY_RightShoulder
+      position: {x: 0.13154894, y: 0, z: 0}
+      rotation: {x: -0.0023368746, y: 0.05425315, z: -0.12836094, w: 0.9902397}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_RightForeArm
+      parentName: CY_RightArm
+      position: {x: 0.26254898, y: 0, z: 0}
+      rotation: {x: 0.03242686, y: 0.005587974, z: -0.007961966, w: 0.9994268}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_RightHand
+      parentName: CY_RightForeArm
+      position: {x: 0.2724757, y: 0.000009417534, z: -0.00001719594}
+      rotation: {x: 0.03240129, y: 0.000097577285, z: 0.041403983, w: 0.998617}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_LeftUpLeg
+      parentName: CY_Hips
+      position: {x: -0.101355396, y: 0, z: 0}
+      rotation: {x: 0.05661613, y: 0.0073498907, z: 0.0021337876, w: 0.9983667}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_LeftLeg
+      parentName: CY_LeftUpLeg
+      position: {x: -0, y: -0.48397723, z: 0}
+      rotation: {x: 0.011060483, y: 0.030398652, z: 0.011718475, w: 0.999408}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_LeftFoot
+      parentName: CY_LeftLeg
+      position: {x: -0, y: -0.38318354, z: 0}
+      rotation: {x: -0.033857808, y: -0.121337205, z: -0.0019167522, w: 0.99203193}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_LeftToeBase
+      parentName: CY_LeftFoot
+      position: {x: -0, y: -0.06588101, z: 0.1520331}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_RightUpLeg
+      parentName: CY_Hips
+      position: {x: 0.101355396, y: 0, z: 0}
+      rotation: {x: 0.04902595, y: -0.033816442, z: -0.008326847, w: 0.99819016}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_RightLeg
+      parentName: CY_RightUpLeg
+      position: {x: -0, y: -0.48397723, z: 0}
+      rotation: {x: -0.012684609, y: -0.019341405, z: -0.008540554, w: 0.999696}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_RightFoot
+      parentName: CY_RightLeg
+      position: {x: -0, y: -0.38318354, z: 0}
+      rotation: {x: 0.002845942, y: 0.11515196, z: -0.029991502, w: 0.99289095}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CY_RightToeBase
+      parentName: CY_RightFoot
+      position: {x: -0, y: -0.06588101, z: 0.1520331}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
