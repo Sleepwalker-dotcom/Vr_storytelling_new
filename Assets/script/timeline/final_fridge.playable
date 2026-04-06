@@ -41,7 +41,7 @@ MonoBehaviour:
     m_Start: 0.8
     m_ClipIn: 0
     m_Asset: {fileID: 4709572602939659813}
-    m_Duration: 57.519333333333336
+    m_Duration: 52.150000000000006
     m_TimeScale: 1
     m_ParentTrack: {fileID: -8001487585869460439}
     m_EaseInDuration: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_Start: 7.583333333333333
     m_ClipIn: 0
     m_Asset: {fileID: 2147317220303822595}
-    m_Duration: 50.736
+    m_Duration: 45.36666666666667
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7291557477789902242}
     m_EaseInDuration: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Markers:
     m_Objects: []
   m_TrackProperties:
-    volume: 0
+    volume: 0.25267327
     stereoPan: 0
     spatialBlend: 1
 --- !u!114 &-7041252735933301796
@@ -510,7 +510,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 7797943519155008469}
-    m_Duration: 58.31933333333333
+    m_Duration: 52.95
     m_TimeScale: 1
     m_ParentTrack: {fileID: -5582926019450432685}
     m_EaseInDuration: 0
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -871,7 +871,7 @@ MonoBehaviour:
     m_Start: 27.983333333333334
     m_ClipIn: 0
     m_Asset: {fileID: 7429337235007131779}
-    m_Duration: 30.336
+    m_Duration: 24.96666666666667
     m_TimeScale: 1
     m_ParentTrack: {fileID: 934781953576392021}
     m_EaseInDuration: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Video;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -73,12 +74,15 @@ public class GameManager : MonoBehaviour
     {
         if (hasEnded) return;
         hasEnded = true;
-
         Debug.Log("[GameManager] 开始播放片尾视频");
+        StartCoroutine(PlayEndingVideoDelayed(5f));
+    }
 
+    private IEnumerator PlayEndingVideoDelayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         if (endingCanvas != null)
             endingCanvas.SetActive(true);
-
         if (endingVideoPlayer != null)
             endingVideoPlayer.Play();
         else

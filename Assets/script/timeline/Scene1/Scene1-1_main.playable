@@ -1999,12 +1999,12 @@ AnimationClip:
       - serializedVersion: 3
         time: 0
         value: 2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: -0.00021860535
+        outSlope: -0.00021860535
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.07658054
       - serializedVersion: 3
         time: 20.016666
         value: 0
@@ -2239,12 +2239,12 @@ AnimationClip:
       - serializedVersion: 3
         time: 0
         value: 2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: -0.00021860535
+        outSlope: -0.00021860535
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.07658054
       - serializedVersion: 3
         time: 20.016666
         value: 0
@@ -2830,9 +2830,9 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 16.983334
-        value: 2
-        inSlope: -0.1512605
-        outSlope: -0.1512605
+        value: 3.0058327
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -2908,9 +2908,9 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 16.983334
-        value: 2
-        inSlope: -0.1512605
-        outSlope: -0.1512605
+        value: 3.0058327
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -3880,4 +3880,4 @@ MonoBehaviour:
   m_TrackProperties:
     volume: 1
     stereoPan: 0
-    spatialBlend: 0
+    spatialBlend: 1
