@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: final_cake 1
   m_EditorClassIdentifier: 
   timeline: {fileID: 11400000, guid: 86024d5c1dd1f974b847f61bf37a2801, type: 2}
-  completionType: 1
+  completionType: 4
   autoPlayNext: 0
   interactableID: cake
   triggerZoneID: 
   placementZoneID: 
-  customTriggerID: 
+  customTriggerID: cake_blown

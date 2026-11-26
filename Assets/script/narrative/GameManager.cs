@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private int currentIndex = 0;
     private bool hasStarted = false;
     private bool hasEnded = false;
+    private bool endingVideoFailed = false;
 
     private void Awake()
     {
@@ -75,17 +76,42 @@ public class GameManager : MonoBehaviour
         if (hasEnded) return;
         hasEnded = true;
         Debug.Log("[GameManager] 开始播放片尾视频");
-        StartCoroutine(PlayEndingVideoDelayed(5f));
+        StartCoroutine(PlayEndingVideoDelayed(0f));
     }
 
     private IEnumerator PlayEndingVideoDelayed(float delay)
     {
         yield return new WaitForSeconds(delay);
+
         if (endingCanvas != null)
             endingCanvas.SetActive(true);
-        if (endingVideoPlayer != null)
-            endingVideoPlayer.Play();
-        else
+
+        if (endingVideoPlayer == null)
+        {
             Debug.LogWarning("[GameManager] 未指定 endingVideoPlayer。");
+            yield break;
+        }
+
+        endingVideoFailed = false;
+        endingVideoPlayer.errorReceived -= OnEndingVideoError;
+        endingVideoPlayer.errorReceived += OnEndingVideoError;
+        endingVideoPlayer.Prepare();
+
+        yield return new WaitUntil(() => endingVideoPlayer.isPrepared || endingVideoFailed);
+
+        if (!endingVideoFailed)
+            endingVideoPlayer.Play();
+    }
+
+    private void OnEndingVideoError(VideoPlayer source, string message)
+    {
+        endingVideoFailed = true;
+        Debug.LogError($"[GameManager] 片尾视频准备失败：{message}");
+    }
+
+    private void OnDestroy()
+    {
+        if (endingVideoPlayer != null)
+            endingVideoPlayer.errorReceived -= OnEndingVideoError;
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class BirthdayCakeBlowInteraction : MonoBehaviour
 {
+    private const string EndingTriggerID = "cake_blown";
+    private const float EndingDelay = 3f;
     [Header("Grab")]
     public XRGrabInteractable grabInteractable;
 
@@ -151,6 +153,10 @@ public class BirthdayCakeBlowInteraction : MonoBehaviour
 
         // ÔÙÏ¨Ãð»ðÑæ
         SetFireState(false);
+
+        yield return new WaitForSeconds(EndingDelay);
+
+        GameEvents.TriggerInteractionComplete(EndingTriggerID);
 
         // ³¡¾°±ä°µ
         if (sceneLightsToDim != null && sceneLightsToDim.Length > 0)

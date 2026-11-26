@@ -78,6 +78,8 @@ public class NarrativeEvent : ScriptableObject
 
             case CompletionType.WaitForCustomTrigger:
                 Debug.Log($"[Event] 开始等待自定义触发ID: {customTriggerID}");
+                if (!string.IsNullOrEmpty(interactableID))
+                    InteractableRegistry.SetActive(interactableID, true);
                 GameEvents.OnInteractionComplete += WaitForCustomTrigger;
                 break;
         }
