@@ -60,8 +60,10 @@ public class NarrativeEvent : ScriptableObject
 
             case CompletionType.WaitForGrab:
                 Debug.Log($"[Event] 开始等待抓取ID: {interactableID}");
-                InteractableRegistry.SetActive(interactableID, true);
                 GameEvents.OnInteractionComplete += WaitForGrab;
+                InteractableRegistry.SetActive(interactableID, true);
+                if (InteractableRegistry.IsSelected(interactableID))
+                    WaitForGrab(interactableID);
                 break;
 
             case CompletionType.WaitForZone:

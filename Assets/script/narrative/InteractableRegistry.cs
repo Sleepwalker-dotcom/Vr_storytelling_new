@@ -37,6 +37,14 @@ public class InteractableRegistry : MonoBehaviour
         Instance.registry[id] = obj;
     }
 
+    public static bool IsSelected(string id)
+    {
+        if (!Instance.registry.TryGetValue(id, out var obj) || obj == null)
+            return false;
+
+        var interactable = obj.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable>();
+        return interactable != null && interactable.isSelected;
+    }
     public static void SetActive(string id, bool active)
     {
         if (Instance.registry.TryGetValue(id, out var obj))
