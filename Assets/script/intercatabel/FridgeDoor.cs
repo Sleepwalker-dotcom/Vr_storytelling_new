@@ -19,7 +19,7 @@ public class FridgeDoor : XRBaseInteractable
     private bool isGrabbed = false;
     private IXRSelectInteractor currentInteractor;
     private float currentAngle = 0f;
-    private float grabAngleOffset = 0f;
+    private float previousHandAngle;
 
     // Signal Receiver 里绑定这两个函数
     public void UnlockDoor()
@@ -42,8 +42,7 @@ public class FridgeDoor : XRBaseInteractable
         currentInteractor = args.interactorObject;
 
         Vector3 handPos = currentInteractor.GetAttachTransform(this).position;
-        float handAngle = GetAngleFromPivot(handPos);
-        grabAngleOffset = currentAngle - handAngle;
+        previousHandAngle = GetAngleFromPivot(handPos);
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
@@ -59,8 +58,9 @@ public class FridgeDoor : XRBaseInteractable
         {
             Vector3 handPos = currentInteractor.GetAttachTransform(this).position;
             float handAngle = GetAngleFromPivot(handPos);
-            float targetAngle = handAngle + grabAngleOffset;
-            currentAngle = Mathf.Clamp(targetAngle, minAngle, maxAngle);
+            float angleDelta = Mathf.DeltaAngle(previousHandAngle, handAngle);
+            previousHandAngle = handAngle;
+            currentAngle = Mathf.Clamp(currentAngle + angleDelta, minAngle, maxAngle);
             pivotPoint.localRotation = Quaternion.Euler(0, currentAngle, 0);
         }
 
@@ -74,6 +74,9 @@ public class FridgeDoor : XRBaseInteractable
     float GetAngleFromPivot(Vector3 position)
     {
         Vector3 direction = position - pivotPoint.position;
+        if (pivotPoint.parent != null)
+            direction = pivotPoint.parent.InverseTransformDirection(direction);
+
         return Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
     }
 }

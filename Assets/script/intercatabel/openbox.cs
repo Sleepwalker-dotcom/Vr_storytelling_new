@@ -15,6 +15,65 @@ public class OpenBox : XRBaseInteractable
     public string triggerID = "box_opened";
     private bool triggered = false;
 
+    public string openingTriggerID;
+    public float automaticOpenAngle = -100f;
+    public float automaticTriggerAngle = 15f;
+    public float openingDuration = 5f;
+
+    private Quaternion closedRotation;
+    private bool openingStarted;
+    private float openingElapsed;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (pivotPoint != null)
+            closedRotation = pivotPoint.localRotation;
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        GameEvents.OnInteractionComplete += OnOpeningTrigger;
+    }
+
+    protected override void OnDisable()
+    {
+        GameEvents.OnInteractionComplete -= OnOpeningTrigger;
+        base.OnDisable();
+    }
+
+    private void OnOpeningTrigger(string id)
+    {
+        if (string.IsNullOrEmpty(openingTriggerID) || id != openingTriggerID || openingStarted)
+            return;
+
+        openingStarted = true;
+    }
+
+    public override bool IsSelectableBy(IXRSelectInteractor interactor)
+    {
+        return string.IsNullOrEmpty(openingTriggerID) && !isLocked && base.IsSelectableBy(interactor);
+    }
+
+    private void UpdateAutomaticOpening()
+    {
+        if (!openingStarted)
+            return;
+
+        openingElapsed += Time.deltaTime;
+        float progress = Mathf.Clamp01(openingElapsed / Mathf.Max(openingDuration, 0.01f));
+        currentAngle = automaticOpenAngle * progress;
+        pivotPoint.localRotation = closedRotation * Quaternion.AngleAxis(currentAngle, Vector3.up);
+
+        if (!triggered && Mathf.Abs(currentAngle) >= automaticTriggerAngle)
+        {
+            triggered = true;
+            LaunchBalloon();
+            CustomTrigger.FireID(triggerID);
+        }
+    }
+
     [Header("气球设置")]
     public GameObject balloon;           // 拖入气球物体
     public float floatSpeed = 0.5f;     // 上升速度
@@ -75,6 +134,12 @@ public class OpenBox : XRBaseInteractable
 
     void Update()
     {
+        if (!string.IsNullOrEmpty(openingTriggerID))
+        {
+            UpdateAutomaticOpening();
+            return;
+        }
+
         if (isGrabbed && currentInteractor != null)
         {
             Vector3 handPos = currentInteractor.GetAttachTransform(this).position;

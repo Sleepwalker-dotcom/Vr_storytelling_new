@@ -1,10 +1,31 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(10000)]
 public class LocomotionController : MonoBehaviour
 {
     public Behaviour moveProvider;
     public Behaviour turnProvider;
     public Behaviour teleportProvider;
+
+    private float movementHeight;
+
+    private void Awake()
+    {
+        movementHeight = transform.position.y;
+        var characterController = GetComponent<CharacterController>();
+        if (characterController != null)
+        {
+            characterController.stepOffset = 0f;
+            characterController.slopeLimit = 0f;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        Vector3 position = transform.position;
+        position.y = movementHeight;
+        transform.position = position;
+    }
 
     public void DisableLocomotion()
     {

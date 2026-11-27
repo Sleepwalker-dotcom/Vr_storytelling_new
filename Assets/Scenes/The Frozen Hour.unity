@@ -19468,7 +19468,7 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
+  m_UseDynamicAttach: 1
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
@@ -20186,6 +20186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events:
+  - {fileID: 11400000, guid: 28929a7e9016ff0478cf010986bdabae, type: 2}
+  - {fileID: 11400000, guid: de68b4940878ac14bb522b0862d11e7c, type: 2}
+  - {fileID: 11400000, guid: 09f5cab8541616d4faea5fddd4ad356f, type: 2}
   - {fileID: 11400000, guid: 17f38d70750b53a45aebb2bf53b2be42, type: 2}
   - {fileID: 11400000, guid: 5c1f97ee2ad056442a6b57fe96168f97, type: 2}
   - {fileID: 11400000, guid: f57596e7af3741349ac750a712a58560, type: 2}
@@ -20197,9 +20200,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a6fc23ce5bd47a844bb6f99c68aa9c11, type: 2}
   - {fileID: 11400000, guid: 079ce500c4f619f41bb8a9b7372a4c04, type: 2}
   - {fileID: 11400000, guid: 0962bcfc74d66534192b8e7c61e16e8e, type: 2}
-  - {fileID: 11400000, guid: 28929a7e9016ff0478cf010986bdabae, type: 2}
-  - {fileID: 11400000, guid: de68b4940878ac14bb522b0862d11e7c, type: 2}
-  - {fileID: 11400000, guid: 09f5cab8541616d4faea5fddd4ad356f, type: 2}
   - {fileID: 11400000, guid: 30757e838ff1a904dbf52f3692b0df80, type: 2}
   - {fileID: 11400000, guid: 6fb7751f3046be74182b27bcd75182c2, type: 2}
   - {fileID: 11400000, guid: 22a9e704e0bfe9a4c80183c95c115c49, type: 2}
@@ -22285,7 +22285,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -31564,7 +31564,7 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
+  m_UseDynamicAttach: 1
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
@@ -36119,7 +36119,7 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   pivotPoint: {fileID: 674173164}
   minAngle: 0
-  maxAngle: 90
+  maxAngle: 180
   drawer: {fileID: 0}
   isLocked: 0
 --- !u!54 &7357558659290556404
@@ -37114,10 +37114,14 @@ MonoBehaviour:
   maxAngle: 0
   triggerAngle: -45
   triggerID: box_opened
+  openingTriggerID: keyslot
+  automaticOpenAngle: -100
+  automaticTriggerAngle: 15
+  openingDuration: 5
   balloon: {fileID: 0}
   floatSpeed: 0.5
   floatHeight: 3
-  isLocked: 0
+  isLocked: 1
 --- !u!23 &8698817364959185890
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -37396,8 +37400,8 @@ MonoBehaviour:
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
   pivotPoint: {fileID: 577701678}
-  minAngle: 0
-  maxAngle: 90
+  minAngle: -180
+  maxAngle: 0
   drawer: {fileID: 0}
   isLocked: 0
 --- !u!65 &8927708897125579845
