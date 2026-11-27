@@ -43,6 +43,23 @@ public class GameManager : MonoBehaviour
         PlayCurrentEvent();
     }
 
+    public void PrepareCakeEnding()
+    {
+        if (!hasStarted || hasEnded)
+            return;
+
+        int targetIndex = System.Array.FindIndex(events, narrativeEvent =>
+            narrativeEvent != null &&
+            narrativeEvent.completionType == CompletionType.WaitForCustomTrigger &&
+            narrativeEvent.customTriggerID == "cake_blown");
+        if (targetIndex < 0 || currentIndex >= targetIndex)
+            return;
+
+        events[currentIndex]?.Cancel();
+        TimelineManager.Instance.CancelCurrent();
+        currentIndex = targetIndex;
+        PlayCurrentEvent();
+    }
     private void PlayCurrentEvent()
     {
         if (currentIndex >= events.Length)

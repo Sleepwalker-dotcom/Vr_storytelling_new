@@ -27,6 +27,14 @@ public class NarrativeEvent : ScriptableObject
 
     private System.Action onComplete;
 
+    public void Cancel()
+    {
+        GameEvents.OnInteractionComplete -= WaitForGrab;
+        GameEvents.OnInteractionComplete -= WaitForZone;
+        GameEvents.OnInteractionComplete -= WaitForPlace;
+        GameEvents.OnInteractionComplete -= WaitForCustomTrigger;
+        onComplete = null;
+    }
     public void Begin(System.Action callback)
     {
         onComplete = callback;

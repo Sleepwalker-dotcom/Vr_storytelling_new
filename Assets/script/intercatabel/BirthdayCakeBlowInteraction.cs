@@ -5,7 +5,6 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class BirthdayCakeBlowInteraction : MonoBehaviour
 {
     private const string EndingTriggerID = "cake_blown";
-    private const float EndingDelay = 1f;
     [Header("Grab")]
     public XRGrabInteractable grabInteractable;
 
@@ -119,24 +118,12 @@ public class BirthdayCakeBlowInteraction : MonoBehaviour
     private void TriggerEndingSequence()
     {
         endingTriggered = true;
-        StartCoroutine(EndingSequenceCoroutine());
-    }
-
-    private System.Collections.IEnumerator EndingSequenceCoroutine()
-    {
-        // ÏÈ²¥´µÆø
         if (blowAudioSource != null && blowClip != null)
-        {
             blowAudioSource.PlayOneShot(blowClip);
-        }
 
-        yield return new WaitForSeconds(0.3f);
-
-        // ÔÙÏ¨Ãð»ðÑæ
         SetFireState(false);
-
-        yield return new WaitForSeconds(EndingDelay);
-
+        if (GameManager.Instance != null)
+            GameManager.Instance.PrepareCakeEnding();
         GameEvents.TriggerInteractionComplete(EndingTriggerID);
     }
 }

@@ -7,12 +7,20 @@ using UnityEngine.Timeline;
 public class TimelineManager : MonoBehaviour
 {
     public static TimelineManager Instance;
+    private PlayableDirector currentDirector;
 
     void Awake()
     {
         Instance = this;
     }
 
+    public void CancelCurrent()
+    {
+        StopAllCoroutines();
+        if (currentDirector != null)
+            currentDirector.Stop();
+        currentDirector = null;
+    }
     public void Play(TimelineAsset timeline, Action onFinish)
     {
         PlayableDirector target = null;
@@ -42,6 +50,7 @@ public class TimelineManager : MonoBehaviour
         if (trigger != null)
             trigger.ResetTriggers();
 
+        currentDirector = target;
         target.Stop();
         target.time = 0;
         target.Play();

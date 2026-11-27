@@ -9,6 +9,7 @@ public class PickupOutline : MonoBehaviour
     public float outlinePulseSpeed = 1.5f;
     private XRGrabInteractable grab;
     private bool pickedUp;
+    private Vector3[] localPoints;
 
     private void Awake()
     {
@@ -53,24 +54,32 @@ public class PickupOutline : MonoBehaviour
         var border = new GameObject("Pickup Outline");
         border.transform.SetParent(targetRenderer.transform, false);
         outline = border.AddComponent<LineRenderer>();
-        outline.useWorldSpace = false;
+        outline.useWorldSpace = true;
         outline.loop = true;
         outline.positionCount = 4;
-        outline.SetPositions(points);
+        localPoints = points;
+        UpdatePositions();
         outline.startWidth = outline.endWidth = outlineWidth;
         outline.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         outline.receiveShadows = false;
-        borderMaterial = new Material(Shader.Find("Universal Render Pipeline/Unlit"));
+        borderMaterial = new Material(Resources.Load<Material>("PickupOutline"));
         borderMaterial.SetColor("_BaseColor", new Color(1f, 0.95f, 0.6f, 1f));
         outline.sharedMaterial = borderMaterial;
         outline.gameObject.SetActive(!pickedUp);
     }
 
-    private void Update()
+    private void UpdatePositions()
+    {
+        for (int i = 0; i < localPoints.Length; i++)
+            outline.SetPosition(i, targetRenderer.transform.TransformPoint(localPoints[i]));
+    }
+
+    private void LateUpdate()
     {
         if (outline == null || !outline.gameObject.activeSelf)
             return;
 
+        UpdatePositions();
         float pulse = (Mathf.Sin(Time.unscaledTime * outlinePulseSpeed * Mathf.PI * 2f) + 1f) * 0.5f;
         outline.startWidth = outline.endWidth = outlineWidth * Mathf.Lerp(0.75f, 1.25f, pulse);
 
