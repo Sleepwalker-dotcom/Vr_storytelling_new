@@ -12,6 +12,7 @@ public class LocomotionController : MonoBehaviour
     private void Awake()
     {
         movementHeight = transform.position.y;
+        gameObject.AddComponent<DroppedItemRecoveryRay>();
         var characterController = GetComponent<CharacterController>();
         if (characterController != null)
         {

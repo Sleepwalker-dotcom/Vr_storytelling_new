@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.Playables;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class BirthdayCakeBlowInteraction : MonoBehaviour
 {
     private const string EndingTriggerID = "cake_blown";
-    private const float EndingDelay = 3f;
+    private const float EndingDelay = 1f;
     [Header("Grab")]
     public XRGrabInteractable grabInteractable;
 
@@ -30,18 +29,11 @@ public class BirthdayCakeBlowInteraction : MonoBehaviour
     public AudioSource blowAudioSource; // 吹气音效
     public AudioClip blowClip;
 
-    [Header("Ending")]
-    public PlayableDirector endingDirector;  // 结尾Timeline（可选）
-    public Light[] sceneLightsToDim;         // 需要变暗的灯
-    public float dimDuration = 2f;
-    public float targetIntensity = 0.1f;
-
     private bool hasBeenPickedUp = false;
     private bool candleLit = false;
     private bool endingTriggered = false;
 
     private Material fireMat;
-    private float[] originalIntensities;
     private bool isHeld = false;
 
     private void Awake()
@@ -52,17 +44,6 @@ public class BirthdayCakeBlowInteraction : MonoBehaviour
         if (fireRenderer != null)
             fireMat = fireRenderer.material;
 
-        if (sceneLightsToDim != null && sceneLightsToDim.Length > 0)
-        {
-            originalIntensities = new float[sceneLightsToDim.Length];
-            for (int i = 0; i < sceneLightsToDim.Length; i++)
-            {
-                if (sceneLightsToDim[i] != null)
-                    originalIntensities[i] = sceneLightsToDim[i].intensity;
-            }
-        }
-
-        // 初始状态：火焰关闭
         SetFireState(false);
     }
 
@@ -157,51 +138,5 @@ public class BirthdayCakeBlowInteraction : MonoBehaviour
         yield return new WaitForSeconds(EndingDelay);
 
         GameEvents.TriggerInteractionComplete(EndingTriggerID);
-
-        // 场景变暗
-        if (sceneLightsToDim != null && sceneLightsToDim.Length > 0)
-        {
-            StartCoroutine(DimLightsCoroutine());
-        }
-
-        // 播放结尾Timeline
-        if (endingDirector != null)
-        {
-            endingDirector.Play();
-        }
-    }
-
-    private System.Collections.IEnumerator DimLightsCoroutine()
-    {
-        float time = 0f;
-
-        float[] startValues = new float[sceneLightsToDim.Length];
-        for (int i = 0; i < sceneLightsToDim.Length; i++)
-        {
-            if (sceneLightsToDim[i] != null)
-                startValues[i] = sceneLightsToDim[i].intensity;
-        }
-
-        while (time < dimDuration)
-        {
-            time += Time.deltaTime;
-            float t = time / dimDuration;
-
-            for (int i = 0; i < sceneLightsToDim.Length; i++)
-            {
-                if (sceneLightsToDim[i] != null)
-                {
-                    sceneLightsToDim[i].intensity = Mathf.Lerp(startValues[i], targetIntensity, t);
-                }
-            }
-
-            yield return null;
-        }
-
-        for (int i = 0; i < sceneLightsToDim.Length; i++)
-        {
-            if (sceneLightsToDim[i] != null)
-                sceneLightsToDim[i].intensity = targetIntensity;
-        }
     }
 }

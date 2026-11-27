@@ -48,6 +48,9 @@ public class PlacementZone : MonoBehaviour
     void SnapObject(GameObject obj)
     {
         isOccupied = true;
+        var recovery = obj.GetComponent<DroppedItemRecovery>();
+        if (recovery != null)
+            recovery.MarkSlotted();
 
         if (matchPosition) obj.transform.position = transform.position;
         if (matchRotation) obj.transform.rotation = transform.rotation;

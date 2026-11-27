@@ -9,6 +9,18 @@ public class MaterialSwapper : XRGrabInteractable
     public Material placedMaterial;     // 放置时的材质（A）
     public Material grabbedMaterial;    // 拿起时的材质（B）
 
+    public bool showOutlineBeforeFirstGrab;
+    public float outlineWidth = 0.008f;
+    public float outlinePulseSpeed = 1.5f;
+    private void Start()
+    {
+        if (!showOutlineBeforeFirstGrab)
+            return;
+        var hint = gameObject.AddComponent<PickupOutline>();
+        hint.targetRenderer = targetRenderer;
+        hint.outlineWidth = outlineWidth;
+        hint.outlinePulseSpeed = outlinePulseSpeed;
+    }
     protected override void Awake()
     {
         base.Awake();

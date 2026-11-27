@@ -400,6 +400,16 @@ public class ToonProEditor : ShaderGUI
         
         ShaderPropertiesGUI(m_Material, materialEditor);
 
+        var shadowLift = FindProperty("_NeighbourShadowLift", props, false);
+        var transitionSoftness = FindProperty("_NeighbourTransition", props, false);
+        if (shadowLift != null && transitionSoftness != null)
+        {
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Neighbour Light Reveal", EditorStyles.boldLabel);
+            materialEditor.ShaderProperty(shadowLift, "Light-driven Shadow Lift");
+            materialEditor.ShaderProperty(transitionSoftness, "Light Transition Softness");
+        }
+
         //materialEditor.PropertiesDefaultGUI(props);
     }
 

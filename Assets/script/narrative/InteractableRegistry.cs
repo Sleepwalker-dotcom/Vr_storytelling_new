@@ -45,6 +45,14 @@ public class InteractableRegistry : MonoBehaviour
         var interactable = obj.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable>();
         return interactable != null && interactable.isSelected;
     }
+    public static bool WasParcelTaken(string id)
+    {
+        if (!Instance.registry.TryGetValue(id, out var obj) || obj == null)
+            return false;
+
+        var parcel = obj.GetComponent<BoxFromNPC>();
+        return parcel != null && parcel.HasBeenTaken;
+    }
     public static void SetActive(string id, bool active)
     {
         if (Instance.registry.TryGetValue(id, out var obj))

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -15,10 +16,13 @@ public class BoxFromNPC : XRGrabInteractable
     public bool canGrab = false;
 
     private bool taken = false;
+    public bool HasBeenTaken => taken;
+    private RigidbodyConstraints originalConstraints;
 
     protected override void Awake()
     {
         base.Awake();
+        originalConstraints = GetComponent<Rigidbody>().constraints;
         if (npcHand != null)
             transform.SetParent(npcHand);
     }
@@ -50,10 +54,15 @@ public class BoxFromNPC : XRGrabInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        if (taken) return;
-        taken = true;
-
+        GetComponent<Rigidbody>().constraints = originalConstraints;
         base.OnSelectEntered(args);
+        if (taken)
+        {
+            GameEvents.TriggerInteractionComplete(interactableID);
+            return;
+        }
+        taken = true;
+        ReleaseTimelineControl();
 
         transform.SetParent(null);
 
@@ -92,5 +101,44 @@ public class BoxFromNPC : XRGrabInteractable
                 rb.useGravity = true;
             }
         }
+    }
+
+    protected override void SetupRigidbodyDrop(Rigidbody body)
+    {
+        base.SetupRigidbodyDrop(body);
+        body.isKinematic = false;
+        body.useGravity = true;
+        body.angularVelocity = Vector3.zero;
+        body.constraints = originalConstraints;
+    }
+
+    protected override void Detach()
+    {
+        base.Detach();
+        var body = GetComponent<Rigidbody>();
+        body.linearVelocity = Vector3.zero;
+        body.angularVelocity = Vector3.zero;
+    }
+
+    private void ReleaseTimelineControl()
+    {
+        var animator = GetComponent<Animator>();
+        if (animator == null)
+            return;
+
+        foreach (var director in FindObjectsByType<PlayableDirector>(
+                     FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            if (director.playableAsset == null)
+                continue;
+
+            foreach (var output in director.playableAsset.outputs)
+            {
+                if (director.GetGenericBinding(output.sourceObject) == animator)
+                    director.ClearGenericBinding(output.sourceObject);
+            }
+        }
+
+        animator.enabled = false;
     }
 }

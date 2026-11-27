@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Neighbour
-  m_Shader: {fileID: 4800000, guid: 32f285866bcb78a4588e71837abf871e, type: 3}
+  m_Shader: {fileID: 4800000, guid: b72cfc34b096405f8ebb43476c7687af, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -28,7 +28,7 @@ Material:
   - _OUTLINETYPE_FFFFFF
   - _USESHADOWS_ON
   - _USESPECULARMASK_ON
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -173,6 +173,8 @@ Material:
     - _MainLightIntesity: 1
     - _MaxScaleDependingOnCamera: 1
     - _Metallic: 0
+    - _NeighbourShadowLift: 0.05
+    - _NeighbourTransition: 0.12
     - _NormalMapStrength: 1
     - _OcclusionStrength: 1
     - _OutlineDynamicSpeed: 0
@@ -233,7 +235,7 @@ Material:
     - _UseDiffuseWarp: 0
     - _UseDiffuseWarpAsOverlay: 0
     - _UseDynamicOutline: 1
-    - _UseEmission: 1
+    - _UseEmission: 0
     - _UseEnvironmentRefletion: 0
     - _UseHatchingConstantScale: 1
     - _UseLightRamp: 0
@@ -255,7 +257,7 @@ Material:
     m_Colors:
     - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
     - _EmissionColor: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 1}
     - _HalftoneColor: {r: 0, g: 0, b: 0, a: 1}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}

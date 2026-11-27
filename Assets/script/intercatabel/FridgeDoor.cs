@@ -19,6 +19,7 @@ public class FridgeDoor : XRBaseInteractable
     private bool isGrabbed = false;
     private IXRSelectInteractor currentInteractor;
     private float currentAngle = 0f;
+    public float OpenAngle => Mathf.Abs(currentAngle);
     private float previousHandAngle;
 
     // Signal Receiver 里绑定这两个函数

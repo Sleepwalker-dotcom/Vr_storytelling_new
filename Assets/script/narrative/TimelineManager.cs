@@ -53,7 +53,11 @@ public class TimelineManager : MonoBehaviour
     {
         float duration = Mathf.Max((float)director.duration, 0.1f);
         Debug.Log($"[TimelineManager] µÈ´ý {duration} Ãë");
-        yield return new WaitForSeconds(duration);
+        while (director != null && director.time < director.duration - 0.0001 &&
+               (director.state == PlayState.Playing || director.time > 0))
+            yield return null;
+        if (director == null)
+            yield break;
         Debug.Log("[TimelineManager] ²¥·Å½áÊø");
         director.Stop();
         onFinish?.Invoke();

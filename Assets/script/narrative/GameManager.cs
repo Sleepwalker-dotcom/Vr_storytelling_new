@@ -89,10 +89,14 @@ public class GameManager : MonoBehaviour
         if (endingVideoPlayer == null)
         {
             Debug.LogWarning("[GameManager] 未指定 endingVideoPlayer。");
+            QuitApplication();
             yield break;
         }
 
         endingVideoFailed = false;
+        endingVideoPlayer.isLooping = false;
+        endingVideoPlayer.loopPointReached -= OnEndingVideoFinished;
+        endingVideoPlayer.loopPointReached += OnEndingVideoFinished;
         endingVideoPlayer.errorReceived -= OnEndingVideoError;
         endingVideoPlayer.errorReceived += OnEndingVideoError;
         endingVideoPlayer.Prepare();
@@ -106,12 +110,30 @@ public class GameManager : MonoBehaviour
     private void OnEndingVideoError(VideoPlayer source, string message)
     {
         endingVideoFailed = true;
+        QuitApplication();
         Debug.LogError($"[GameManager] 片尾视频准备失败：{message}");
+    }
+
+    private void OnEndingVideoFinished(VideoPlayer source)
+    {
+        QuitApplication();
+    }
+
+    private void QuitApplication()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     private void OnDestroy()
     {
         if (endingVideoPlayer != null)
+        {
             endingVideoPlayer.errorReceived -= OnEndingVideoError;
+            endingVideoPlayer.loopPointReached -= OnEndingVideoFinished;
+        }
     }
 }

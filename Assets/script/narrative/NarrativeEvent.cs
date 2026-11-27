@@ -62,7 +62,7 @@ public class NarrativeEvent : ScriptableObject
                 Debug.Log($"[Event] 开始等待抓取ID: {interactableID}");
                 GameEvents.OnInteractionComplete += WaitForGrab;
                 InteractableRegistry.SetActive(interactableID, true);
-                if (InteractableRegistry.IsSelected(interactableID))
+                if (InteractableRegistry.IsSelected(interactableID) || InteractableRegistry.WasParcelTaken(interactableID))
                     WaitForGrab(interactableID);
                 break;
 

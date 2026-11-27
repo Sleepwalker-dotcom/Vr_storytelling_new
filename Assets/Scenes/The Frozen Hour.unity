@@ -3339,6 +3339,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: calendar_03
+  releaseFromContainerOnGrab: 0
 --- !u!54 &119528033
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3752,6 +3753,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: calendar_01
+  releaseFromContainerOnGrab: 0
 --- !u!54 &160038623
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6325,6 +6327,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: 
+  releaseFromContainerOnGrab: 0
 --- !u!54 &307412696
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6410,6 +6413,8 @@ GameObject:
   - component: {fileID: 312656705}
   - component: {fileID: 312656704}
   - component: {fileID: 312656706}
+  - component: {fileID: 9100000300}
+  - component: {fileID: 9100000400}
   m_Layer: 0
   m_Name: playerable_director_MainScene
   m_TagString: Untagged
@@ -6799,6 +6804,9 @@ MonoBehaviour:
   targetRenderer: {fileID: 345023714}
   placedMaterial: {fileID: 2100000, guid: c169fe15ca50c6b48a42d45a44306b96, type: 2}
   grabbedMaterial: {fileID: 2100000, guid: cdd60f13956307e4c9f698618eec5466, type: 2}
+  showOutlineBeforeFirstGrab: 0
+  outlineWidth: 0.008
+  outlinePulseSpeed: 1.5
 --- !u!65 &345023717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8154,6 +8162,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: 
+  releaseFromContainerOnGrab: 0
 --- !u!54 &454834838
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9083,6 +9092,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: 
+  releaseFromContainerOnGrab: 0
 --- !u!54 &526446793
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13453,7 +13463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 785869572}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Photo group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14694,6 +14704,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: calendar_07
+  releaseFromContainerOnGrab: 0
 --- !u!54 &869017585
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14952,6 +14963,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: 
+  releaseFromContainerOnGrab: 0
 --- !u!54 &871597654
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15824,6 +15836,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: cake
+  releaseFromContainerOnGrab: 0
 --- !u!54 &927019367
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15874,11 +15887,6 @@ MonoBehaviour:
   triggerDistance: 0.2
   blowAudioSource: {fileID: 927019369}
   blowClip: {fileID: 8300000, guid: 44931c350e96a7447916885cb74ecb48, type: 3}
-  endingDirector: {fileID: 0}
-  sceneLightsToDim:
-  - {fileID: 964461452}
-  dimDuration: 2
-  targetIntensity: 0.1
 --- !u!82 &927019369
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16481,6 +16489,7 @@ GameObject:
   - component: {fileID: 971743832}
   - component: {fileID: 971743839}
   - component: {fileID: 971743840}
+  - component: {fileID: 9100000600}
   m_Layer: 0
   m_Name: pickup_phone
   m_TagString: Untagged
@@ -16657,6 +16666,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: pickup_phone
+  releaseFromContainerOnGrab: 0
 --- !u!54 &971743835
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17460,6 +17470,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: calendar_02
+  releaseFromContainerOnGrab: 0
 --- !u!54 &998574430
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17813,6 +17824,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: shoe
+  releaseFromContainerOnGrab: 0
 --- !u!54 &1015274389
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18088,7 +18100,7 @@ PlayableDirector:
     value: {fileID: 242048346}
   - key: {fileID: 3758970166682630251, guid: 8e2f84fe508771a45b0721ed0ae38deb, type: 2}
     value: {fileID: 0}
-  - key: {fileID: -5415638113863667891, guid: 8e2f84fe508771a45b0721ed0ae38deb, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 971743830}
   - key: {fileID: 8594652707852213899, guid: 8e2f84fe508771a45b0721ed0ae38deb, type: 2}
     value: {fileID: 1082903496}
@@ -19517,6 +19529,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: aBottleOfBeer
+  releaseFromContainerOnGrab: 0
 --- !u!54 &1082903491
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20186,9 +20199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events:
-  - {fileID: 11400000, guid: 28929a7e9016ff0478cf010986bdabae, type: 2}
-  - {fileID: 11400000, guid: de68b4940878ac14bb522b0862d11e7c, type: 2}
-  - {fileID: 11400000, guid: 09f5cab8541616d4faea5fddd4ad356f, type: 2}
   - {fileID: 11400000, guid: 17f38d70750b53a45aebb2bf53b2be42, type: 2}
   - {fileID: 11400000, guid: 5c1f97ee2ad056442a6b57fe96168f97, type: 2}
   - {fileID: 11400000, guid: f57596e7af3741349ac750a712a58560, type: 2}
@@ -20200,6 +20210,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a6fc23ce5bd47a844bb6f99c68aa9c11, type: 2}
   - {fileID: 11400000, guid: 079ce500c4f619f41bb8a9b7372a4c04, type: 2}
   - {fileID: 11400000, guid: 0962bcfc74d66534192b8e7c61e16e8e, type: 2}
+  - {fileID: 11400000, guid: 28929a7e9016ff0478cf010986bdabae, type: 2}
+  - {fileID: 11400000, guid: de68b4940878ac14bb522b0862d11e7c, type: 2}
+  - {fileID: 11400000, guid: 09f5cab8541616d4faea5fddd4ad356f, type: 2}
   - {fileID: 11400000, guid: 30757e838ff1a904dbf52f3692b0df80, type: 2}
   - {fileID: 11400000, guid: 6fb7751f3046be74182b27bcd75182c2, type: 2}
   - {fileID: 11400000, guid: 22a9e704e0bfe9a4c80183c95c115c49, type: 2}
@@ -20538,6 +20551,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: 
+  releaseFromContainerOnGrab: 0
 --- !u!54 &1194163476
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21405,6 +21419,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: 
+  releaseFromContainerOnGrab: 0
 --- !u!54 &1293986417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22523,6 +22538,9 @@ MonoBehaviour:
   targetRenderer: {fileID: 1388471592}
   placedMaterial: {fileID: 2100000, guid: c169fe15ca50c6b48a42d45a44306b96, type: 2}
   grabbedMaterial: {fileID: 2100000, guid: cdd60f13956307e4c9f698618eec5466, type: 2}
+  showOutlineBeforeFirstGrab: 1
+  outlineWidth: 0.008
+  outlinePulseSpeed: 1.5
 --- !u!65 &1388471590
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23347,6 +23365,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: calendar_04
+  releaseFromContainerOnGrab: 0
 --- !u!54 &1438542924
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23552,8 +23571,6 @@ PlayableDirector:
     value: {fileID: 1242700331}
   - key: {fileID: 2964888439944656451, guid: c80007d3e9a2c8a4d86809f01250b113, type: 2}
     value: {fileID: 0}
-  - key: {fileID: -6921573707503286092, guid: c80007d3e9a2c8a4d86809f01250b113, type: 2}
-    value: {fileID: 971743830}
   - key: {fileID: 4417052801747615241, guid: c80007d3e9a2c8a4d86809f01250b113, type: 2}
     value: {fileID: 1015274390}
   - key: {fileID: 8611220931057251645, guid: c80007d3e9a2c8a4d86809f01250b113, type: 2}
@@ -24206,6 +24223,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: 
+  releaseFromContainerOnGrab: 0
 --- !u!54 &1515233537
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25382,6 +25400,8 @@ GameObject:
   - component: {fileID: 1596332224}
   - component: {fileID: 1596332223}
   - component: {fileID: 1596332225}
+  - component: {fileID: 9100000200}
+  - component: {fileID: 9100000500}
   m_Layer: 0
   m_Name: playerable_director_Scene_middle
   m_TagString: Untagged
@@ -25963,6 +25983,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: 
+  releaseFromContainerOnGrab: 0
 --- !u!54 &1628890912
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27054,7 +27075,6 @@ GameObject:
   - component: {fileID: 1782163552}
   - component: {fileID: 1782163551}
   - component: {fileID: 1782163549}
-  - component: {fileID: 1782163548}
   m_Layer: 0
   m_Name: cap1
   m_TagString: Untagged
@@ -27074,7 +27094,8 @@ Transform:
   m_LocalPosition: {x: 0.011237696, y: 0.014322006, z: 0.012816682}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9100000101}
   m_Father: {fileID: 1552964371}
   m_LocalEulerAnglesHint: {x: -0.143, y: 157.274, z: -0.202}
 --- !u!65 &1782163548
@@ -27083,7 +27104,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782163546}
+  m_GameObject: {fileID: 9100000100}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -27096,8 +27117,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.22968514, y: 0.50856656, z: 0.09918846}
-  m_Center: {x: -0.10940579, y: -0.01429995, z: 0.0453538}
+  m_Size: {x: 0.25, y: 0.50856656, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1782163549
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27276,7 +27297,7 @@ GameObject:
   - component: {fileID: 1799697861}
   - component: {fileID: 1799697860}
   m_Layer: 0
-  m_Name: playerable_director_Scene3-2-2
+  m_Name: playerable_director_Scene3-2-2_main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27364,10 +27385,6 @@ PlayableDirector:
     value: {fileID: 1886444386}
   - key: {fileID: -8084673334384214128, guid: 365daccfe5313354a9b464b8aef3df3b, type: 2}
     value: {fileID: 5374646442558518616}
-  - key: {fileID: -1006172111471770645, guid: 365daccfe5313354a9b464b8aef3df3b, type: 2}
-    value: {fileID: 1388471587}
-  - key: {fileID: -3843359485665249710, guid: 365daccfe5313354a9b464b8aef3df3b, type: 2}
-    value: {fileID: 1441324848}
   - key: {fileID: 7047628298232048005, guid: 365daccfe5313354a9b464b8aef3df3b, type: 2}
     value: {fileID: 686807644}
   - key: {fileID: -4072148955502591411, guid: 365daccfe5313354a9b464b8aef3df3b, type: 2}
@@ -27569,6 +27586,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: calendar_06
+  releaseFromContainerOnGrab: 0
 --- !u!54 &1800076693
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28030,6 +28048,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: 
+  releaseFromContainerOnGrab: 0
 --- !u!54 &1828422780
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28113,8 +28132,6 @@ PlayableDirector:
     value: {fileID: 242048346}
   - key: {fileID: 3758970166682630251, guid: 8e2f84fe508771a45b0721ed0ae38deb, type: 2}
     value: {fileID: 0}
-  - key: {fileID: -5415638113863667891, guid: 8e2f84fe508771a45b0721ed0ae38deb, type: 2}
-    value: {fileID: 971743830}
   - key: {fileID: 8594652707852213899, guid: 8e2f84fe508771a45b0721ed0ae38deb, type: 2}
     value: {fileID: 1082903496}
   - key: {fileID: 8355191267082098279, guid: 8e2f84fe508771a45b0721ed0ae38deb, type: 2}
@@ -28880,6 +28897,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: calendar_05
+  releaseFromContainerOnGrab: 0
 --- !u!54 &1863038659
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30034,7 +30052,6 @@ GameObject:
   - component: {fileID: 1945163496}
   - component: {fileID: 1945163501}
   - component: {fileID: 1945163500}
-  - component: {fileID: 1945163498}
   - component: {fileID: 1945163497}
   m_Layer: 0
   m_Name: cap2
@@ -30055,7 +30072,8 @@ Transform:
   m_LocalPosition: {x: 0.0021815002, y: 0.00005254937, z: 0.010826483}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9100000103}
   m_Father: {fileID: 1557105041}
   m_LocalEulerAnglesHint: {x: 0, y: 164.942, z: 0}
 --- !u!54 &1945163497
@@ -30091,7 +30109,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945163495}
+  m_GameObject: {fileID: 9100000102}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -30104,8 +30122,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.23544352, y: 0.5090126, z: 0.0707767}
-  m_Center: {x: 0.118866876, y: 0.0000019494935, z: -0.0361729}
+  m_Size: {x: 0.25, y: 0.5090126, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1945163500
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30380,6 +30398,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: 
+  releaseFromContainerOnGrab: 0
 --- !u!54 &1947274250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31613,6 +31632,7 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: phone
+  releaseFromContainerOnGrab: 0
 --- !u!114 &2127019447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31989,6 +32009,208 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &9100000100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9100000101}
+  - component: {fileID: 1782163548}
+  m_Layer: 0
+  m_Name: Cap Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9100000101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100000100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.19702427, z: 0, w: 0.9803986}
+  m_LocalPosition: {x: -0.10940579, y: -0.01429995, z: 0.0453538}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1782163547}
+  m_LocalEulerAnglesHint: {x: 0, y: 22.726, z: 0}
+--- !u!1 &9100000102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9100000103}
+  - component: {fileID: 1945163498}
+  m_Layer: 0
+  m_Name: Cap Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9100000103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100000102}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.131028, z: 0, w: 0.99137866}
+  m_LocalPosition: {x: 0.118866876, y: 0.0000019494935, z: -0.0361729}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1945163496}
+  m_LocalEulerAnglesHint: {x: 0, y: 15.058, z: 0}
+--- !u!1 &9100000104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9100000105}
+  - component: {fileID: 7357558659290556405}
+  m_Layer: 0
+  m_Name: Cap Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9100000105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100000104}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.131028, z: 0, w: 0.99137866}
+  m_LocalPosition: {x: 0.118866876, y: 0.0000019494935, z: -0.0361729}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7357558659290556402}
+  m_LocalEulerAnglesHint: {x: 0, y: 15.058, z: 0}
+--- !u!1 &9100000106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9100000107}
+  - component: {fileID: 8927708897125579845}
+  m_Layer: 0
+  m_Name: Cap Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9100000107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100000106}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.19702427, z: 0, w: 0.9803986}
+  m_LocalPosition: {x: -0.10940579, y: -0.01429995, z: 0.0453538}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 8927708897125579843}
+  m_LocalEulerAnglesHint: {x: 0, y: 22.726, z: 0}
+--- !u!114 &9100000200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596332221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c0dd3c557740a9bd3285ecacc622c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLight: {fileID: 964461452}
+  peakIntensity: 2
+  frequency: 6
+  recoveryDelay: 3
+  recoveryDuration: 7
+--- !u!114 &9100000300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312656702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687248e9afe24e5d8fa03c83cb1e75be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 145854257}
+--- !u!114 &9100000400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312656702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325c2379c3e64720934f175716e2c8f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutDuration: 2
+--- !u!114 &9100000500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596332221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa5d7d70df94904933070e1daa7296f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bottleGroup: {fileID: 1441324849}
+  singlePhoto: {fileID: 1388471588}
+  targetHeight: 2.5
+  turns: 2
+--- !u!114 &9100000600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971743830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4108780f4e24448a35adde8c9779a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 971743837}
+  outlineWidth: 0.008
+  outlinePulseSpeed: 1.5
 --- !u!33 &3261940214483273
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -35030,8 +35252,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1608e85c0e1b0df41be0fb695a7760ca, type: 2}
-  - {fileID: 5561349426305759274, guid: fcfb527c67323494b92f984431c89599, type: 3}
+  - {fileID: 2100000, guid: ef4cfb7529a44caeaa28835743f6a2da, type: 2}
+  - {fileID: 2100000, guid: ef4cfb7529a44caeaa28835743f6a2da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -35140,7 +35362,6 @@ GameObject:
   - component: {fileID: 364619740270036320}
   - component: {fileID: 5085593533916707615}
   - component: {fileID: 7357558659290556403}
-  - component: {fileID: 7357558659290556405}
   - component: {fileID: 7357558659290556404}
   m_Layer: 0
   m_Name: cap2
@@ -35376,6 +35597,18 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 9100000300}
+          m_TargetAssemblyTypeName: FridgeDoorTimelinePause, Assembly-CSharp
+          m_MethodName: PauseForDoor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
 --- !u!33 &6484840017696609658
 MeshFilter:
@@ -36042,7 +36275,8 @@ Transform:
   m_LocalPosition: {x: 0.0021815002, y: 0.00005254937, z: 0.010826483}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9100000105}
   m_Father: {fileID: 674173164}
   m_LocalEulerAnglesHint: {x: 0, y: 164.942, z: 0}
 --- !u!114 &7357558659290556403
@@ -36155,7 +36389,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6161931385987763531}
+  m_GameObject: {fileID: 9100000104}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -36168,8 +36402,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.23544352, y: 0.5090126, z: 0.0707767}
-  m_Center: {x: 0.118866876, y: 0.0000019494935, z: -0.0361729}
+  m_Size: {x: 0.24999997, y: 0.5090126, z: 0.027003627}
+  m_Center: {x: -0.0000000044566573, y: 1.9648871e-10, z: -0.008501834}
 --- !u!33 &7509216557072671414
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -36445,7 +36679,6 @@ GameObject:
   - component: {fileID: 7059544860228091056}
   - component: {fileID: 8927708897125579844}
   - component: {fileID: 8927708897125579846}
-  - component: {fileID: 8927708897125579845}
   m_Layer: 0
   m_Name: cap1
   m_TagString: Untagged
@@ -36641,12 +36874,13 @@ MonoBehaviour:
   m_ThrowVelocityScale: 1.5
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
-  m_RetainTransformParent: 1
+  m_RetainTransformParent: 0
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
   interactableID: keytobox
+  releaseFromContainerOnGrab: 1
 --- !u!54 &8164078559873711757
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36669,8 +36903,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -37324,7 +37558,8 @@ Transform:
   m_LocalPosition: {x: 0.011237696, y: 0.014322006, z: 0.012816682}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9100000107}
   m_Father: {fileID: 577701678}
   m_LocalEulerAnglesHint: {x: -0.143, y: 157.274, z: -0.202}
 --- !u!114 &8927708897125579844
@@ -37410,7 +37645,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7943539811304468822}
+  m_GameObject: {fileID: 9100000106}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -37423,8 +37658,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.22968514, y: 0.50856656, z: 0.09918846}
-  m_Center: {x: -0.10940579, y: -0.01429995, z: 0.0453538}
+  m_Size: {x: 0.24999997, y: 0.50856656, z: 0.02939948}
+  m_Center: {x: -0.0000000032723022, y: 7.201225e-10, z: -0.009699767}
 --- !u!54 &8927708897125579846
 Rigidbody:
   m_ObjectHideFlags: 0
