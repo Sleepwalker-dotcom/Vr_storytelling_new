@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.Playables;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -18,11 +19,13 @@ public class BoxFromNPC : XRGrabInteractable
     private bool taken = false;
     public bool HasBeenTaken => taken;
     private RigidbodyConstraints originalConstraints;
+    private readonly List<(Collider body, Collider content)> internalCollisions = new List<(Collider, Collider)>();
 
     protected override void Awake()
     {
         base.Awake();
         originalConstraints = GetComponent<Rigidbody>().constraints;
+        IgnoreInternalCollisions();
         if (npcHand != null)
             transform.SetParent(npcHand);
     }
@@ -54,6 +57,7 @@ public class BoxFromNPC : XRGrabInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        transform.SetParent(null, true);
         GetComponent<Rigidbody>().constraints = originalConstraints;
         base.OnSelectEntered(args);
         if (taken)
@@ -64,15 +68,6 @@ public class BoxFromNPC : XRGrabInteractable
         taken = true;
         ReleaseTimelineControl();
 
-        transform.SetParent(null);
-
-        var rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.isKinematic = false;
-            rb.useGravity = false;
-        }
-
         Debug.Log($"[BoxFromNPC] 箱子被接过，触发ID: {interactableID}");
         GameEvents.TriggerInteractionComplete(interactableID);
     }
@@ -81,26 +76,7 @@ public class BoxFromNPC : XRGrabInteractable
     {
         base.OnSelectExited(args);
 
-        var rb = GetComponent<Rigidbody>();
-        if (rb != null)
-            rb.useGravity = true;
-
         Debug.Log("[BoxFromNPC] 箱子被放下");
-    }
-
-    void Update()
-    {
-        if (taken && transform.parent != null)
-        {
-            transform.SetParent(null);
-
-            var rb = GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.isKinematic = false;
-                rb.useGravity = true;
-            }
-        }
     }
 
     protected override void SetupRigidbodyDrop(Rigidbody body)
@@ -140,5 +116,43 @@ public class BoxFromNPC : XRGrabInteractable
         }
 
         animator.enabled = false;
+    }
+
+    private void IgnoreInternalCollisions()
+    {
+        var body = GetComponent<Rigidbody>();
+        var colliders = GetComponentsInChildren<Collider>(true);
+        foreach (var bodyCollider in colliders)
+        {
+            if (bodyCollider.attachedRigidbody != body)
+                continue;
+            foreach (var contentCollider in colliders)
+            {
+                if (contentCollider.attachedRigidbody == body ||
+                    Physics.GetIgnoreCollision(bodyCollider, contentCollider))
+                    continue;
+                Physics.IgnoreCollision(bodyCollider, contentCollider, true);
+                internalCollisions.Add((bodyCollider, contentCollider));
+            }
+        }
+    }
+
+    public void ReleaseInternalCollisions(Transform item)
+    {
+        for (int i = internalCollisions.Count - 1; i >= 0; i--)
+        {
+            var pair = internalCollisions[i];
+            if (pair.content != null && !pair.content.transform.IsChildOf(item))
+                continue;
+            if (pair.body != null && pair.content != null)
+                Physics.IgnoreCollision(pair.body, pair.content, false);
+            internalCollisions.RemoveAt(i);
+        }
+    }
+
+    protected override void OnDestroy()
+    {
+        ReleaseInternalCollisions(transform);
+        base.OnDestroy();
     }
 }

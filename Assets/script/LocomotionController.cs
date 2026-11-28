@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.XR;
+using Unity.XR.CoreUtils;
+using System.Collections;
 
 [DefaultExecutionOrder(10000)]
 public class LocomotionController : MonoBehaviour
@@ -8,10 +11,14 @@ public class LocomotionController : MonoBehaviour
     public Behaviour teleportProvider;
 
     private float movementHeight;
+    private Vector3 spawnPosition;
+    private Vector3 spawnForward;
 
     private void Awake()
     {
         movementHeight = transform.position.y;
+        spawnPosition = transform.position;
+        spawnForward = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
         gameObject.AddComponent<DroppedItemRecoveryRay>();
         var characterController = GetComponent<CharacterController>();
         if (characterController != null)
@@ -21,6 +28,28 @@ public class LocomotionController : MonoBehaviour
         }
     }
 
+    private IEnumerator Start()
+    {
+        var origin = GetComponent<XROrigin>();
+        if (origin == null || origin.Camera == null)
+            yield break;
+
+        bool tracked = false;
+        while (!tracked)
+        {
+            var head = InputDevices.GetDeviceAtXRNode(XRNode.Head);
+            tracked = head.TryGetFeatureValue(CommonUsages.isTracked, out bool isTracked) && isTracked;
+            yield return null;
+        }
+
+        yield return new WaitForEndOfFrame();
+        origin.MatchOriginUpCameraForward(Vector3.up, spawnForward);
+        Vector3 cameraPosition = origin.Camera.transform.position;
+        cameraPosition.x = spawnPosition.x;
+        cameraPosition.z = spawnPosition.z;
+        origin.MoveCameraToWorldLocation(cameraPosition);
+        Debug.Log("[Locomotion] Aligned tracked head to the starting position and heading.");
+    }
     private void LateUpdate()
     {
         Vector3 position = transform.position;

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private bool hasStarted = false;
     private bool hasEnded = false;
     private bool endingVideoFailed = false;
+    private float keyHoldTime;
 
     private void Awake()
     {
@@ -28,6 +29,37 @@ public class GameManager : MonoBehaviour
         Debug.Log("[GameManager] 等待片头视频结束后开始");
     }
 
+    private void Update()
+    {
+        if (!hasStarted || hasEnded || currentIndex >= events.Length ||
+            events[currentIndex] == null ||
+            !events[currentIndex].name.StartsWith("Scene2-2", System.StringComparison.Ordinal))
+        {
+            keyHoldTime = 0f;
+            return;
+        }
+
+        if (!InteractableRegistry.IsSelected("keytobox"))
+        {
+            keyHoldTime = 0f;
+            return;
+        }
+
+        keyHoldTime += Time.deltaTime;
+        if (keyHoldTime < 3f)
+            return;
+
+        int targetIndex = System.Array.FindIndex(events, narrativeEvent =>
+            narrativeEvent != null && narrativeEvent.name == "Scene3-2_1clock");
+        if (targetIndex < 0)
+            return;
+
+        keyHoldTime = 0f;
+        events[currentIndex].Cancel();
+        TimelineManager.Instance.CancelCurrent();
+        currentIndex = targetIndex;
+        PlayCurrentEvent();
+    }
     public void BeginGame()
     {
         if (hasStarted)
@@ -83,6 +115,8 @@ public class GameManager : MonoBehaviour
 
     private void OnEventComplete()
     {
+        if (events[currentIndex] != null && events[currentIndex].name == "Scene2-2-3")
+            return;
         Debug.Log($"[GameManager] Event {currentIndex} 完成，切换下一个");
         currentIndex++;
         PlayCurrentEvent();

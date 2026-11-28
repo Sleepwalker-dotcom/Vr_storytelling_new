@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Video;
+using System.Collections;
+using UnityEngine.XR;
 
 public class VideoToTimeline : MonoBehaviour
 {
@@ -12,36 +14,122 @@ public class VideoToTimeline : MonoBehaviour
     [Header("片头期间锁定移动（可选）")]
     public LocomotionController locomotionController;
 
+    public bool skipTutorialForTesting;
+    public IntroGrabTutorial tutorial;
+    private bool titleStarted;
+    private bool videoFailed;
+    private bool firstFrameReady;
     private bool hasTriggered = false;
 
     private void OnEnable()
     {
         if (videoPlayer != null)
+        {
             videoPlayer.loopPointReached += OnVideoFinished;
+            videoPlayer.errorReceived += OnVideoError;
+            videoPlayer.frameReady += OnFrameReady;
+        }
     }
 
     private void OnDisable()
     {
         if (videoPlayer != null)
+        {
             videoPlayer.loopPointReached -= OnVideoFinished;
+            videoPlayer.errorReceived -= OnVideoError;
+            videoPlayer.frameReady -= OnFrameReady;
+        }
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
-        // ✅ 片头开始：锁移动
         if (locomotionController != null)
             locomotionController.DisableLocomotion();
-
-        // 播放视频
         if (videoPlayer != null)
-            videoPlayer.Play();
-        else
-            Debug.LogWarning("[VideoToTimeline] videoPlayer is not assigned.");
+        {
+            videoPlayer.playOnAwake = false;
+            videoPlayer.Stop();
+            videoPlayer.waitForFirstFrame = true;
+            videoPlayer.Prepare();
+        }
+        if (videoCanvas != null)
+            videoCanvas.SetActive(false);
+
+        if (tutorial == null)
+            tutorial = FindFirstObjectByType<IntroGrabTutorial>();
+        if (skipTutorialForTesting && tutorial != null && tutorial.group != null)
+            tutorial.group.SetActive(false);
+
+        if (!skipTutorialForTesting)
+        {
+            while (XRSettings.isDeviceActive &&
+                   !(InputDevices.GetDeviceAtXRNode(XRNode.Head).TryGetFeatureValue(
+                       CommonUsages.isTracked, out bool tracked) && tracked))
+                yield return null;
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            Camera camera = locomotionController != null
+                ? locomotionController.GetComponent<Unity.XR.CoreUtils.XROrigin>().Camera
+                : Camera.main;
+            if (camera != null)
+            {
+                if (tutorial == null)
+                    tutorial = FindFirstObjectByType<IntroGrabTutorial>();
+                if (tutorial == null)
+                    tutorial = gameObject.AddComponent<IntroGrabTutorial>();
+                yield return tutorial.Run(camera);
+            }
+        }
+
+        titleStarted = true;
+        if (videoPlayer == null)
+        {
+            OnVideoFinished(null);
+            yield break;
+        }
+
+        float deadline = Time.realtimeSinceStartup + 15f;
+        while (!videoPlayer.isPrepared && !videoFailed && Time.realtimeSinceStartup < deadline)
+            yield return null;
+        if (!videoPlayer.isPrepared || videoFailed)
+        {
+            Debug.LogWarning("[VideoToTimeline] Title video could not be prepared.");
+            OnVideoFinished(videoPlayer);
+            yield break;
+        }
+
+        firstFrameReady = false;
+        videoPlayer.sendFrameReadyEvents = true;
+        videoPlayer.Play();
+        deadline = Time.realtimeSinceStartup + 15f;
+        while (!firstFrameReady && !videoFailed && Time.realtimeSinceStartup < deadline)
+            yield return null;
+        videoPlayer.sendFrameReadyEvents = false;
+        if (firstFrameReady && !hasTriggered)
+        {
+            if (videoCanvas != null)
+                videoCanvas.SetActive(true);
+        }
+        else if (!hasTriggered)
+        {
+            videoPlayer.Stop();
+            OnVideoFinished(videoPlayer);
+        }
     }
 
+    private void OnFrameReady(VideoPlayer source, long frame)
+    {
+        firstFrameReady = true;
+    }
+
+    private void OnVideoError(VideoPlayer source, string message)
+    {
+        videoFailed = true;
+        Debug.LogWarning("[VideoToTimeline] " + message);
+    }
     private void OnVideoFinished(VideoPlayer vp)
     {
-        if (hasTriggered) return;
+        if (!titleStarted || hasTriggered) return;
         hasTriggered = true;
 
         // 隐藏片头 Canvas
